@@ -1,14 +1,14 @@
 def quicksort(array)
-  pivot = array[0]
+  return array if array.size <= 1
+  low =[]
   high = []
-  low = []
-  for i in 1..array.size - 1
-    if pivot >= array[i]
-      low.push(array[i])
+  pivot = array.shift
+  array.each do |e|
+    if e <= pivot
+      low.push(e)
     else
-      high.push(array[i])
+      high.push(e)
     end
   end
-  quicksort(high)
-  quicksort(low)
+  quicksort(low) + [pivot] + quicksort(high)
 end
